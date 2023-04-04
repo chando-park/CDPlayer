@@ -396,7 +396,7 @@ public class CDPlayerView: UIView {
     }
 }
 
-extension CDPlayerView{
+public extension CDPlayerView{
     func play(rate: Float = 1) {
         self.rate = rate
     }
@@ -415,4 +415,44 @@ extension CDPlayerView{
         self.currentTime = 0
         self.player?.play()
     }
+}
+
+public extension CDPlayerView{
+ 
+    func setPlayerProcessBlock(block: @escaping PlayerProcessBlock){
+        self._playerProcessBlock = block
+    }
+    
+    func setPlayerBootingProcessBlock(block: @escaping PlayerBootingProcessBlock){
+        self._playerBootingProcessBlock = block
+    }
+    
+    func setVideoProcessBlock(block: @escaping VideoProcessBlock){
+        self._videoProcessBlock = block
+    }
+    
+    func setVideoLoadedTimeRangesBlock(block: @escaping VideoLoadedTimeRangesBlock){
+        self._videoLoadedTimeRangesBlock = block
+    }
+    
+    func setVideoDurationBlock(block: @escaping VideoDurationBlock){
+        self._videoDurationBlock = block
+    }
+    
+    func setVideoCurrentBlock(block: @escaping VideoCurrentBlock){
+        self._videoCurrentBlock = block
+    }
+    
+    func setVideoRateBlock(block: @escaping VideoRateBlock){
+        self._videoRateBlock = block
+    }
+    
+    func setVideoIsLikelyKeepUpBlock(block: @escaping VideoIsLikelyKeepUpBlock){
+        self._videoIsLikelyKeepUpBlock = block
+    }
+    
+    func setVideoFinishedBlock(block: @escaping VideoFinishedBlock){
+        self._videoFinishedBlock = block
+    }
+
 }
