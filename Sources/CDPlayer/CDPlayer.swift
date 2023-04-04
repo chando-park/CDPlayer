@@ -90,9 +90,9 @@ public class CDPlayerView: UIView {
     private weak var lastPlayerTimeObserve: AVPlayer?
     private var pictureInPictureController: AVPictureInPictureController?
 
-    var isCanBackgroundPlay: Bool = true
+    public var isCanBackgroundPlay: Bool = true
     
-    var isReleasePlayer: Bool{
+    public var isReleasePlayer: Bool{
         get{
             if let _ = self.playerLayer.player{
                 return false
@@ -112,7 +112,7 @@ public class CDPlayerView: UIView {
     }
     
     
-    var isCanPIP: Bool = false{
+    public var isCanPIP: Bool = false{
         didSet{
             if isCanPIP{
                 if AVPictureInPictureController.isPictureInPictureSupported(){
@@ -124,13 +124,13 @@ public class CDPlayerView: UIView {
         }
     }
 
-    var fillMode: CDPlayerViewFillMode! {
+    public var fillMode: CDPlayerViewFillMode! {
         didSet {
             playerLayer.videoGravity = fillMode.AVLayerVideoGravity
         }
     }
     
-    var maximumDuration: TimeInterval? {
+    public var maximumDuration: TimeInterval? {
         get {
             if let playerItem = self.player?.currentItem {
                 return CMTimeGetSeconds(playerItem.duration)
@@ -139,7 +139,7 @@ public class CDPlayerView: UIView {
         }
     }
     
-    var currentTime: Double {
+    public var currentTime: Double {
         get {
             guard let player = player else {
                 return 0
@@ -155,7 +155,7 @@ public class CDPlayerView: UIView {
         }
     }
     
-    var interval = CMTimeMake(value: 1, timescale: 60) {
+    public var interval = CMTimeMake(value: 1, timescale: 60) {
         didSet {
             if rate != 0 {
                 addCurrentTimeObserver()
@@ -163,7 +163,7 @@ public class CDPlayerView: UIView {
         }
     }
     
-    var rate: Float {
+    public var rate: Float {
         get {
             guard let player = player else {
                 return 0
@@ -182,7 +182,7 @@ public class CDPlayerView: UIView {
         }
     }
     
-    var availableDuration: CMTimeRange {
+    public var availableDuration: CMTimeRange {
         let range = self.player?.currentItem?.loadedTimeRanges.first
         if let range = range {
             return range.timeRangeValue
@@ -190,7 +190,7 @@ public class CDPlayerView: UIView {
         return CMTimeRange.zero
     }
     
-    var url: URL? {
+    public var url: URL? {
         didSet {
             guard let url = url else {
                 return
